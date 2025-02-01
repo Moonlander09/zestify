@@ -52,7 +52,7 @@ function Main() {
       // Adjust ingredients quantities
       const updatedIngredients = recipe.ingredients.map((ingredient) => ({
         ...ingredient,
-        quantity: (ingredient.quantity * newServings) / recipe.servings,
+        quantity: parseFloat(((ingredient.quantity * newServings) / recipe.servings).toFixed(2)),
       }));
 
       setRecipe((prevRecipe) => ({
@@ -69,7 +69,7 @@ function Main() {
     // Adjust ingredients quantities
     const updatedIngredients = recipe.ingredients.map((ingredient) => ({
       ...ingredient,
-      quantity: (ingredient.quantity * newServings) / recipe.servings,
+      quantity: parseFloat(((ingredient.quantity * newServings) / recipe.servings).toFixed(2)),
     }));
 
     setRecipe((prevRecipe) => ({
@@ -148,7 +148,7 @@ function Main() {
               <span>
                 <GiCheckMark />
               </span>
-              <div className="recipe__quantity">{ing.quantity}</div>
+              <div className="recipe__quantity">{ing.quantity && ing.quantity.toFixed(2)}</div>
               <div className="recipe__description">
                 <span className="recipe__unit">{ing.unit}</span>
                 {ing.description}
